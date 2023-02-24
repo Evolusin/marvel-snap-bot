@@ -65,7 +65,17 @@ def draw_matches(screen, matches, main_screen=True):
                 org,
                 cv2.FONT_HERSHEY_SIMPLEX,
                 0.7,
-                (0, 0, 255),
+                (0, 0, 0),
+                3,
+                cv2.LINE_AA,
+            )
+            cv2.putText(
+                screen,
+                text,
+                org,
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.7,
+                (124, 252, 0),
                 2,
                 cv2.LINE_AA,
             )
