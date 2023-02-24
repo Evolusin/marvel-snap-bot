@@ -1,4 +1,4 @@
-from loger import warning
+from snap.logger.loger import warning
 
 
 class SettingsMain:

@@ -1,6 +1,6 @@
 import pyautogui
 import time
-from loger import log
+from snap.logger.loger import log
 
 def click_point(x, y, debug=False):
     x = int(x)
