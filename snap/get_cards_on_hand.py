@@ -4,6 +4,8 @@ import mss
 import os
 from settings import Settings
 
+conifg = Settings()
+
 
 def find_templates_on_screenshot(screenshot, templates):
     img = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
@@ -119,19 +121,38 @@ def count_matches(matches):
     return count
 
 
-def get_cards_on_hand():
-    conifg = Settings()
+def get_screen_and_screenshot():
     monitor = conifg.monitor
-    templates = conifg.templates
     # get screenshot from monitor
     screen = get_screenshot(monitor)
     # create new screenshot from point (x, y) to (x1, y1)
     screenshot = cut_image(screen, 0, 740, 555, 900)
+    return screen, screenshot
+
+
+def analize_hand():
+    templates = conifg.templates
+    screen, screenshot = get_screen_and_screenshot()
     # search templates on cutted screenshot
     matches = find_templates_on_screenshot(screenshot, templates)
     count = count_matches(matches)
+
+    # draw card count and matches on screen
     draw_card_count(screen, count)
     draw_matches(screen, matches)
     draw_matches(screenshot, matches, main_screen=False)
+    cards_on_hand = get_cards_on_hand(matches)
+    return screen, screenshot, matches, count, cards_on_hand
 
-    show_images([screen, screenshot], ["Screen", "Screenshot"])
+
+# get information about cards on hand from deck and matches. Deck comes from config
+def get_cards_on_hand(matches):
+    deck = conifg.deck
+    cards = []
+    for template, rects in matches.items():
+        for rect in rects:
+            for card in deck:
+                if card["template_name"] == template:
+                    # append card name to cards list
+                    cards.append(card["name"])
+    return cards

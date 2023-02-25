@@ -1,7 +1,7 @@
-from get_cards_on_hand import get_cards_on_hand
+from logic import game_logic
 
 if __name__ == "__main__":
     running = True
 
     while running:
-        get_cards_on_hand()
+        game_logic()
