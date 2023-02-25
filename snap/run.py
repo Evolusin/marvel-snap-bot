@@ -1,13 +1,7 @@
-import pyautogui
-import objc
-import time
+from get_cards_on_hand import get_cards_on_hand
 
-from snap.logger.loger import log, debug
-from snap.analizer.catcher import needle_position
-from snap.functions.functions import click_point
+if __name__ == "__main__":
+    running = True
 
-time.sleep(2)
-debug(pyautogui.size())
-play = needle_position('templates/play.png')
-debug(play)
-click_point(play[0],play[1])
+    while running:
+        get_cards_on_hand()
