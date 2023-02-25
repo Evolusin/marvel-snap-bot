@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Hawkeye",
+        "cost": 1,
+        "power": 1,
+        "template_name": "hawkeye.png"
+    },
+    {
+        "name": "Misty Knight",
+        "cost": 1,
+        "power": 2,
+        "template_name": "misty.png"
+    },
+    {
+        "name": "Quicksilver",
+        "cost": 1,
+        "power": 2,
+        "template_name": "quicksilver.png"
+    },
+    {
+        "name": "Medusa",
+        "cost": 2,
+        "power": 2,
+        "template_name": "medusa.png"
+    },
+    {
+        "name": "Star-Lord",
+        "cost": 2,
+        "power": 2,
+        "template_name": "starlord.png"
+    },
+    {
+        "name": "Sentinel",
+        "cost": 2,
+        "power": 3,
+        "template_name": "sentinel.png"
+    },
+    {
+        "name": "Shocker",
+        "cost": 2,
+        "power": 3,
+        "template_name": "shocker.png"
+    },
+    {
+        "name": "Mister Fantastic",
+        "cost": 3,
+        "power": 2,
+        "template_name": "misterf.png"
+    },
+    {
+        "name": "Punisher",
+        "cost": 3,
+        "power": 2,
+        "template_name": "punisher.png"
+    },
+    {
+        "name": "Cyclops",
+        "cost": 3,
+        "power": 4,
+        "template_name": "cyclops.png"
+    },
+    {
+        "name": "Jessica Jones",
+        "cost": 4,
+        "power": 4,
+        "template_name": "jessica.png"
+    },
+    {
+        "name": "Kazar",
+        "cost": 4,
+        "power": 4,
+        "template_name": "kazar.png"
+    },
+    {
+        "name": "Thing",
+        "cost": 4,
+        "power": 5,
+        "template_name": "thing.png"
+    },
+    {
+        "name": "Iron Man",
+        "cost": 5,
+        "power": 0,
+        "template_name": "ironman.png"
+    },
+    {
+        "name": "Abomination",
+        "cost": 5,
+        "power": 9,
+        "template_name": "abomination.png"
+    },
+    {
+        "name": "Hulk",
+        "cost": 6,
+        "power": 12,
+        "template_name": "hulk.png"
+    }
+]
