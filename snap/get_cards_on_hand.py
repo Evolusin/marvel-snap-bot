@@ -30,6 +30,7 @@ def find_templates_on_screenshot(screenshot, templates):
 def cut_image(image, x, y, x1, y1):
     return np.array(image[y:y1, x:x1])
 
+
 # put text in bottom left corner of screen with card count
 def draw_card_count(screen, card_count):
     org = (10, 980)
@@ -98,14 +99,17 @@ def draw_matches(screen, matches, main_screen=True):
                 2,
                 cv2.LINE_AA,
             )
+
+
 def show_images(images_list, titles_list):
     for image, title in zip(images_list, titles_list):
         cv2.imshow(title, image)
-        
+
     if cv2.waitKey(25) & 0xFF == ord("q"):
         cv2.destroyAllWindows()
         exit(0)
     return True
+
 
 # count not empty matches
 def count_matches(matches):
@@ -113,6 +117,7 @@ def count_matches(matches):
     for _, rects in matches.items():
         count += len(rects)
     return count
+
 
 def get_cards_on_hand():
     conifg = Settings()

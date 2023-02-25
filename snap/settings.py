@@ -1,7 +1,9 @@
 import os
 
+
 def get_templates():
     return os.listdir("templates")
+
 
 class Settings:
     def __init__(self):
