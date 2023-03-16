@@ -47,7 +47,11 @@ class Settings:
         self.turn_templates = get_turn_templates()
         self.end_turn_template = "menu_templates/end_turn.png"
         self.game_window = "menu_templates/game_window.png"
-        self.define_monitor()
+        
+    def get_monitor(self):
+        if not hasattr(self, "monitor"):
+            self.define_monitor()
+        return self.monitor
         
     def define_monitor(self):
         left, top = define_top_left_corner(self.game_window, "Game window")

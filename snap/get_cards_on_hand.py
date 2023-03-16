@@ -92,7 +92,7 @@ def count_matches(matches):
 
 
 def get_screen_and_screenshot():
-    monitor = conifg.monitor
+    monitor = conifg.get_monitor()
     # get screenshot from monitor
     screen = get_screenshot(monitor)
     # create new screenshot from point (x, y) to (x1, y1)
