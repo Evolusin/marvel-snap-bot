@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 import mss
 import os
-from utilts.locate import get_screenshot
-from utilts.locate import cut_image
 from analizer.catcher import find_templates_on_screenshot
+from analizer.catcher import count_matches
+from analizer.catcher import get_screen_and_screenshot
 from settings import Settings
 
 conifg = Settings()
@@ -73,31 +73,7 @@ def draw_matches(screen, matches, main_screen=True):
             )
 
 
-def show_images(images_list, titles_list):
-    for image, title in zip(images_list, titles_list):
-        cv2.imshow(title, image)
 
-    if cv2.waitKey(25) & 0xFF == ord("q"):
-        cv2.destroyAllWindows()
-        exit(0)
-    return True
-
-
-# count not empty matches
-def count_matches(matches):
-    count = 0
-    for _, rects in matches.items():
-        count += len(rects)
-    return count
-
-
-def get_screen_and_screenshot():
-    monitor = conifg.get_monitor()
-    # get screenshot from monitor
-    screen = get_screenshot(monitor)
-    # create new screenshot from point (x, y) to (x1, y1)
-    screenshot = cut_image(screen, 0, 740, 555, 900)
-    return screen, screenshot
 
 
 def analize_hand():

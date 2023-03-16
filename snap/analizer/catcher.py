@@ -27,3 +27,19 @@ def find_templates_on_screenshot(screenshot, templates):
         matches[x] = rects
 
     return matches
+
+# count not empty matches
+def count_matches(matches):
+    count = 0
+    for _, rects in matches.items():
+        count += len(rects)
+    return count
+
+
+def get_screen_and_screenshot():
+    monitor = conifg.get_monitor()
+    # get screenshot from monitor
+    screen = get_screenshot(monitor)
+    # create new screenshot from point (x, y) to (x1, y1)
+    screenshot = cut_image(screen, 0, 740, 555, 900)
+    return screen, screenshot
