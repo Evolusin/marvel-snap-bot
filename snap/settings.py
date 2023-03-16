@@ -1,6 +1,6 @@
 import os
 import json
-
+from utilts.locate import define_top_left_corner
 
 # load deck.json and get all templates from it. Pack them into a list
 def get_templates():
@@ -38,11 +38,19 @@ def get_turn_templates():
     return turn_templates
 
 
+
 class Settings:
     def __init__(self):
-        self.monitor = {"top": 38, "left": 623, "width": 555, "height": 1030}
         self.templates = get_templates()
         self.deck = get_cards()
         self.mana_pool_templates = get_mana_pool_templates()
         self.turn_templates = get_turn_templates()
         self.end_turn_template = "menu_templates/end_turn.png"
+        self.game_window = "menu_templates/game_window.png"
+        self.define_monitor()
+        
+    def define_monitor(self):
+        left, top = define_top_left_corner(self.game_window, "Game window")
+        self.monitor = {"top": top, "left": left, "width": 555, "height": 1000}
+        
+    

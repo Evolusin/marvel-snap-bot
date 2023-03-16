@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import mss
 import os
+from utilts.locate import get_screenshot
+from utilts.locate import cut_image
 from settings import Settings
 
 conifg = Settings()
@@ -29,10 +31,6 @@ def find_templates_on_screenshot(screenshot, templates):
     return matches
 
 
-def cut_image(image, x, y, x1, y1):
-    return np.array(image[y:y1, x:x1])
-
-
 # put text in bottom left corner of screen with card count
 def draw_card_count(screen, card_count):
     org = (10, 980)
@@ -57,13 +55,6 @@ def draw_card_count(screen, card_count):
         2,
         cv2.LINE_AA,
     )
-
-
-def get_screenshot(monitor):
-    with mss.mss() as sct:
-        # Get raw pixels from the screen, save it to a Numpy array
-        img = np.array(sct.grab(monitor))
-        return img
 
 
 def draw_matches(screen, matches, main_screen=True):
