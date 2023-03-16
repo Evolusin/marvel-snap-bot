@@ -7,8 +7,8 @@ from settings import Settings
 conifg = Settings()
 
 
-def find_templates_on_screenshot(screenshot, path_for_templates,templates, threshold=0.5):
-    img = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
+def find_templates_on_screenshot(screen, path_for_templates,templates, threshold=0.5):
+    img = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
     matches = {}
     for x in templates:
         template = cv2.imread(f"{path_for_templates}/{x}", cv2.IMREAD_GRAYSCALE)
