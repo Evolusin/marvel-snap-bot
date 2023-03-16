@@ -7,11 +7,11 @@ from settings import Settings
 conifg = Settings()
 
 
-def find_templates_on_screenshot(screenshot, templates):
+def find_templates_on_screenshot(screenshot, path_for_templates,templates):
     img = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
     matches = {}
     for x in templates:
-        template = cv2.imread(f"templates/{x}", cv2.IMREAD_GRAYSCALE)
+        template = cv2.imread(f"{path_for_templates}/{x}", cv2.IMREAD_GRAYSCALE)
         res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
 
         # Setting a threshold
@@ -43,3 +43,40 @@ def get_screen_and_screenshot():
     # create new screenshot from point (x, y) to (x1, y1)
     screenshot = cut_image(screen, 0, 740, 555, 900)
     return screen, screenshot
+
+def get_screenshot(monitor):
+    with mss.mss() as sct:
+        # Get raw pixels from the screen, save it to a Numpy array
+        img = np.array(sct.grab(monitor))
+        return img
+
+
+def cut_image(image, x, y, x1, y1):
+    return np.array(image[y:y1, x:x1])
+
+
+def draw_matches(screen, matches, main_screen=True):
+    # draw rectangles and text on screenshot
+    for template, rects in matches.items():
+        for rect in rects:
+            pt = rect[0], rect[1]
+            if main_screen:
+                pt = (
+                    pt[0],
+                    pt[1] + 740,
+                )  # add 740 to y position because we cut image
+            cv2.rectangle(
+                screen, pt, (pt[0] + rect[2], pt[1] + rect[3]), (0, 0, 255), 2
+            )
+            text = template.replace(".png", "")
+            org = (pt[0], pt[1] + rect[3] + 20)
+            cv2.putText(
+                screen,
+                text,
+                org,
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.7,
+                (0, 0, 0),
+                3,
+                cv2.LINE_AA,
+            )
