@@ -7,15 +7,13 @@ from settings import Settings
 conifg = Settings()
 
 
-def find_templates_on_screenshot(screenshot, path_for_templates,templates):
+def find_templates_on_screenshot(screenshot, path_for_templates,templates, threshold=0.5):
     img = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
     matches = {}
     for x in templates:
         template = cv2.imread(f"{path_for_templates}/{x}", cv2.IMREAD_GRAYSCALE)
         res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
 
-        # Setting a threshold
-        threshold = 0.5
         loc = np.where(res >= threshold)
 
         # For each match we draw a rectangle around it on our screenshot
