@@ -78,7 +78,7 @@ def draw_matches(screen, matches, main_screen=True):
 
 def analize_hand():
     templates = conifg.templates
-    screen, screenshot = get_screen_and_screenshot()
+    screen, screenshot = get_screen_and_screenshot(0, 740, 555, 900)
     # search templates on cutted screenshot
     matches = find_templates_on_screenshot(screenshot, 'card_templates',templates)
     count = count_matches(matches)
