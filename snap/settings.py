@@ -45,7 +45,7 @@ class Settings:
         self.deck = get_cards()
         self.mana_pool_templates = get_mana_pool_templates()
         self.turn_templates = get_turn_templates()
-        self.end_turn_template = "menu_templates/end_turn.png"
+        self.end_turn_template = "turn_templates/end_turn.png"
         self.game_window = "menu_templates/game_window.png"
         
     def get_monitor(self):

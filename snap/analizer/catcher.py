@@ -11,7 +11,7 @@ def find_templates_on_screenshot(screen, path_for_templates,templates, threshold
     img = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
     matches = {}
     for x in templates:
-        template = cv2.imread(f"{path_for_templates}/{x}", cv2.IMREAD_GRAYSCALE)
+        template = cv2.imread(f"templates/{path_for_templates}/{x}", cv2.IMREAD_GRAYSCALE)
         res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
 
         loc = np.where(res >= threshold)

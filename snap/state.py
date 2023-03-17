@@ -17,11 +17,9 @@ def analize_mana(screen, screenshot):
     templates_dict = conifg.mana_pool_templates
     # # convert only dict values to list
     templates = list(templates_dict.values())
-    print(templates)
     # # search templates on cutted screenshot
     matches = find_templates_on_screenshot(
-        screen, "mana_templates", templates, 0.1
+        screen, "mana_templates", templates, 0.7
     )
-    exit()
     # draw_matches(screen, matches)
     return screen, screenshot, matches

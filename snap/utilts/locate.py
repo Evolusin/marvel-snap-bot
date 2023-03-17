@@ -18,7 +18,7 @@ def cut_image(image, x, y, x1, y1):
 # find template on screenshot
 # group rectangles and return list of matches
 def find_template_on_screenshot(screenshot, template, threshold=0.9):
-    template = cv.imread(template, cv.IMREAD_GRAYSCALE)
+    template = cv.imread("templates/" + template, cv.IMREAD_GRAYSCALE)
     w, h = template.shape[::-1]
     gray = cv.cvtColor(screenshot, cv.COLOR_BGR2GRAY)
     res = cv.matchTemplate(gray, template, cv.TM_CCOEFF_NORMED)
