@@ -15,16 +15,13 @@ conifg = Settings()
 
 def analize_mana(screen, screenshot):
     templates_dict = conifg.mana_pool_templates
-    cv2.imshow("Screfdsafadsen", screen)
-    if cv2.waitKey(25) & 0xFF == ord("q"):
-        cv2.destroyAllWindows()
-        exit(0)
-    # TODO: FIX THIS SHIT
-    # convert only dict values to list
+    # # convert only dict values to list
     templates = list(templates_dict.values())
-    # search templates on cutted screenshot
+    print(templates)
+    # # search templates on cutted screenshot
     matches = find_templates_on_screenshot(
-        screen, "menu_templates", templates, 0.1
+        screen, "mana_templates", templates, 0.1
     )
-    draw_matches(screen, matches)
+    exit()
+    # draw_matches(screen, matches)
     return screen, screenshot, matches

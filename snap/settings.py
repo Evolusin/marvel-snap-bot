@@ -23,7 +23,7 @@ def get_cards():
 # with mana cost as key and template name as value
 def get_mana_pool_templates():
     mana_pool_templates = {}
-    for file in os.listdir("menu_templates"):
+    for file in os.listdir("templates/mana_templates"):
         if file.startswith("mana_"):
             mana_pool_templates[file[5]] = file
     return mana_pool_templates
@@ -32,7 +32,7 @@ def get_mana_pool_templates():
 # with turn as key and template name as value
 def get_turn_templates():
     turn_templates = {}
-    for file in os.listdir("menu_templates"):
+    for file in os.listdir("templates/turn_templates"):
         if file.startswith("turn_"):
             turn_templates[file[5]] = file
     return turn_templates
